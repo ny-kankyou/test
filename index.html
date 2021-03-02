@@ -1,1 +1,78 @@
-test
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<title>CSV to JSON ZIP</title>
+
+
+</head>
+<body>
+
+
+
+<h1>CSVファイルをJSON形式にしZIPファイルに圧縮します。</h1>
+
+<form action="./conv_csv_json.cgi" enctype="multipart/form-data" method="POST">
+CSVファイル: <input type="file" name="file" size="32"><br><br>
+<input type="submit" value="変換ダウンロード">
+</form>
+
+<br><br>
+<p>
+「名寄市行政サービス案内LINEbotQA」専用のプログラムです。<br>
+ファイル名は日本語が入ってもＯＫです。<br>
+スプレッドシートで「ファイル」から「形式を指定してダウンロード」の<br>
+「カンマ区切りの値」をクリックしてcsvファイルをダウンロードしてください。<br>
+EXCELで作ったCSVファイルでもＯＫです。<br>
+１行目は必ず項目名でお願いいたします。（自動判別のため）<br>
+
+
+<hr>
+
+<br><br>
+
+基本的な項目名（この通の名前や順番でなくても動作します）
+<table border="1">
+<tr><th>列名</th><th>項目名</th><th>内容</th><th>補足</th></tr>
+<tr><td>A列</td><td>No.</td><td>通し番号</td><td></td></tr>
+<tr bgcolor="#ffcccc"><td>B列</td><td>質問内容</td><td>質問するQにあたる部分。１００文字以内。</td><td></td></tr>
+<tr bgcolor="#ffcccc"><td>C列</td><td>答え</td><td>デフォルトの答え/LINEオンリーの時はLINE文章に入れるといい</td><td></td></tr>
+<tr><td>D列</td><td>質問言い換え１</td><td>Qを別の文言と紐づけたい時に利用する</td><td></td></tr>
+<tr><td>E列</td><td>質問言い換え２</td><td>Qを別の文言と紐づけたい時に利用する</td><td></td></tr>
+<tr><td>F列</td><td>質問言い換え３</td><td>Qを別の文言と紐づけたい時に利用する</td><td></td></tr>
+<tr><td>G列</td><td>LINE文章</td><td>LINE用の文章</td><td>1つの機能\</td></tr>
+<tr><td>H列</td><td>LINE画像（URL）</td><td>LINE用の画像</td><td>1つの独立した機能\</td></tr>
+<tr><td>I列</td><td>LINE選択肢タイトル</td><td>複数選択肢で答えてもらいたい時に使う</td><td>タイトルと、最低1つの選択肢で動く機能\</td></tr>
+<tr><td>J列</td><td>LINE選択肢1</td><td></td><td></td></tr>
+<tr><td>K列</td><td>LINE選択肢2</td><td></td><td></td></tr>
+<tr><td>L列</td><td>LINE選択肢3</td><td></td><td></td></tr>
+<tr><td>M列</td><td>LINE画像選択肢タイトル</td><td>複数選択肢で答えてもらいたい時に使う（画像付き）</td><td>画像と説明付きの選択ボタンの機能\</td></tr>
+<tr><td>N列</td><td>サブタイトル</td><td></td><td>ボタンは最低1つあればいい。</td></tr>
+<tr><td>O列</td><td>画像URL</td><td></td><td>ポストに書かれた文字で再度質問がかかる</td></tr>
+<tr><td>P列</td><td>ボタン１テキスト</td><td></td><td></td></tr>
+<tr><td>Q列</td><td>ボタン１ポスト</td><td></td><td></td></tr>
+<tr><td>R列</td><td>ボタン２テキスト</td><td></td><td></td></tr>
+<tr><td>S列</td><td>ボタン２ポスト</td><td></td><td></td></tr>
+<tr><td>T列</td><td>ボタン３テキスト</td><td></td><td></td></tr>
+<tr><td>U列</td><td>ボタン３ポスト</td><td></td><td></td></tr>
+<tr><td>V列</td><td>Custom</td><td>LINE bot designerなどで作ったJSONを埋め込む</td><td></td></tr>
+</table><table><tr><td><font size="6" color="#ffcccc">■</font></td><td><font color="red">は必須項目です。</font></td></tr></table><br>
+
+
+
+<h4>対策済み</h4>
+・CSVファイルに空白行があっても読み飛ばし<br>
+・CSVで質問、答え、どちらかが空の場合も読み飛ばし<br>
+・複数文字コードの対応（CSVが UTF8,EUC,Shift_JIS,jis などに対応　スプレッドシートでもEXCELで作ってもＯＫ）<br>
+・縦列の自由化（列がどの順番でもなくても対応、余計な列は読み飛ばし、最低「質問」と「答え」があれば対応する）<br>
+・項目名のゆらぎに対応（「質問内容」でも「質問」でも「お祭り中Q］とかでも「質問内容」として対応　すべての項目で）<br>
+<br><br>
+
+<h4>これからすること</h4>
+・ほかの bot での対応、（「agent.json」　や 「Default・・・・.json」 「zipファイル名」など）<br>
+
+<br><br>
+<br><br>
+<br><br>
+</body>
+</HTML>
